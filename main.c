@@ -44,13 +44,8 @@ int Menu(float Alumnos[N_ALUM][N_PROG], int flag){
     int menu, resultado;
 
     printf("Elija una opcion: \n1. Obtener el promedio de calificaciones de cada alumno durante el semestre \n2. La nota promedio del grupo de estudiantes para cada progreso \n");
-    printf("3. El alumno que obtuvo el mayor promedio de calificación durante el semestre \n4. Salir\n");
+    printf("3. El alumno que obtuvo el mayor promedio de calificacion durante el semestre \n4. Salir\n");
     resultado = scanf("%d", &menu);
-
-    //while (resultado != 1)
-    //{
-        
-    //}
     
 
     switch (menu){
@@ -130,21 +125,31 @@ void PromedioProgreso(float Alumnos[N_ALUM][N_PROG]){
 }
 
 void MejorNota(float Alumnos[N_ALUM][N_PROG]){
-    float max = 0;
-    int maxI = 0, maxJ = 0;
+    float pAlumnos[N_ALUM];
+    float max = 0, suma;
+    int maxI = 0;
 
     for (int i = 0; i < N_ALUM; i++)
     {
         for (int j = 0; j < N_PROG; j++)
         {
-            if (Alumnos[i][j] > max)
-            {
-                max = Alumnos[i][j];
-                maxI = i;
-                maxJ = j;
-            }          
+            suma = suma + Alumnos[i][j];
         }
+        pAlumnos[i] = suma / N_PROG;
+        suma = 0;
     }
     
+    for (int i = 0; i < N_ALUM; i++)
+    {
+        if (pAlumnos[i] > max)
+        {
+            max = pAlumnos[i];
+            maxI = i;
+        }
+        
+    }
+    
+
+    printf("El mejor promedio es del alumno %d con %.2f\n", maxI+1, pAlumnos[maxI]);
 
 }
