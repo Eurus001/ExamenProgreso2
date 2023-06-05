@@ -41,11 +41,11 @@ int main(){
 
 int Menu(float Alumnos[N_ALUM][N_PROG], int flag){
 
-    int menu, resultado;
+    int menu;
 
     printf("Elija una opcion: \n1. Obtener el promedio de calificaciones de cada alumno durante el semestre \n2. La nota promedio del grupo de estudiantes para cada progreso \n");
     printf("3. El alumno que obtuvo el mayor promedio de calificacion durante el semestre \n4. Salir\n");
-    resultado = scanf("%d", &menu);
+    scanf("%d", &menu);
     
 
     switch (menu){
